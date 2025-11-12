@@ -9,7 +9,7 @@
 <body>
     <h1>My P5.js Self-Portrait</h1>
     <div id="iframe-container">
-        <iframe src="https://editor.p5js.org/jaydenanglin/full/-KXBXSgcX"></iframe>"
+        <iframe src="https://editor.p5js.org/jaydenanglin/full/-KXBXSgcX"></iframe>
                 width="600"
                 height="600"
                 frameborder="0">
