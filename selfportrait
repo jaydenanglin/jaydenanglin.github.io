@@ -3,17 +3,316 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P5.js Sketch</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Character Illustration with Chihuahua</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin: 20px;
+            max-width: 800px;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        #sketch-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .github-link {
+            display: inline-block;
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        .github-link:hover {
+            background: #555;
+        }
+        
+        .features {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        .features h3 {
+            color: #333;
+            margin-top: 0;
+        }
+        
+        .features ul {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
-    <h1>My P5.js Self-Portrait</h1>
-    <div id="iframe-container">
-        <iframe src="https://editor.p5js.org/jaydenanglin/full/-KXBXSgcX"></iframe>
-                width="600"
-                height="600"
-                frameborder="0">
-        </iframe>
+    <div class="container">
+        <h1>Character & Chihuahua Illustration</h1>
+        <p class="description">
+            A p5.js sketch featuring a character with glasses and a beanie, accompanied by a front-facing chihuahua. 
+            Created with generative art principles.
+        </p>
+        
+        <div id="sketch-container">
+            <!-- p5.js sketch will be rendered here -->
+        </div>
+        
+        <div class="features">
+            <h3>Features:</h3>
+            <ul>
+                <li>Character with glasses and black beanie featuring a white flower</li>
+                <li>Black t-shirt with detailed sleeves</li>
+                <li>Front-facing chihuahua with multi-colored coat</li>
+                <li>Responsive design that works on different screen sizes</li>
+                <li>Pure p5.js implementation with no external dependencies</li>
+            </ul>
+        </div>
+        
+        <center>
+            <a href="https://github.com/jaydenanglin/jaydenanglin.github.io" class="github-link" target="_blank">
+                View on GitHub
+            </a>
+        </center>
     </div>
+
+    <script>
+        function setup() {
+            // Create canvas centered in the container
+            const canvas = createCanvas(600, 600);
+            canvas.parent('sketch-container');
+        }
+
+        function draw() {
+            background(240, 245, 255); // Light blue background
+            
+            // Colors
+            const skin = color(255, 213, 170);
+            const beanieBlack = color(20, 20, 20);
+            const shirtBlack = color(30, 30, 30);
+            const glassesFrame = color(50, 50, 50);
+            const glassesLens = color(200, 230, 255, 150); // Semi-transparent
+            
+            // Draw the character (scaled up to fill canvas)
+            drawCharacter(skin, beanieBlack, shirtBlack, glassesFrame, glassesLens);
+            
+            // Draw the chihuahua on the right side
+            drawChihuahua();
+            
+            noLoop(); // Only draw once
+        }
+
+        function drawCharacter(skin, beanieBlack, shirtBlack, glassesFrame, glassesLens) {
+            // Head (larger and positioned higher)
+            fill(skin);
+            noStroke();
+            ellipse(300, 200, 220, 240);
+            
+            // Neck (thicker and longer)
+            fill(skin);
+            rect(270, 300, 60, 50);
+            
+            // Shoulders and upper body (wider and extends to bottom)
+            fill(shirtBlack);
+            // Main torso - extends to bottom of canvas
+            rect(180, 350, 240, 250, 15);
+            
+            // Left shoulder/arm (larger)
+            ellipse(150, 370, 100, 80);
+            // Right shoulder/arm (larger)
+            ellipse(450, 370, 100, 80);
+            
+            // Arms with black sleeves (longer and thicker)
+            // Left arm
+            fill(shirtBlack);
+            rect(110, 370, 50, 150, 25);
+            // Left hand (larger)
+            fill(skin);
+            ellipse(110, 520, 45, 40);
+            
+            // Right arm
+            fill(shirtBlack);
+            rect(440, 370, 50, 150, 25);
+            // Right hand (larger)
+            fill(skin);
+            ellipse(490, 520, 45, 40);
+            
+            // Beanie - larger to fit bigger head
+            fill(beanieBlack);
+            // Main beanie part that contours to head
+            arc(300, 140, 230, 140, PI, TWO_PI, CHORD);
+            // Beanie brim (wider)
+            rect(185, 140, 230, 20);
+            
+            // White flower on beanie brim (slightly larger)
+            fill(255);
+            // Flower petals
+            for (let i = 0; i < 5; i++) {
+                let angle = (TWO_PI / 5) * i;
+                let x = 340 + cos(angle) * 10;
+                let y = 150 + sin(angle) * 10;
+                ellipse(x, y, 12, 12);
+            }
+            // Flower center
+            fill(255, 255, 150); // Light yellow center
+            ellipse(340, 150, 10, 10);
+            
+            // Glasses (larger)
+            fill(glassesLens);
+            stroke(glassesFrame);
+            strokeWeight(4);
+            // Left lens
+            ellipse(250, 200, 70, 50);
+            // Right lens
+            ellipse(350, 200, 70, 50);
+            // Bridge
+            noFill();
+            line(285, 200, 315, 200);
+            
+            // Eyes (larger)
+            noStroke();
+            fill(0);
+            // Left eye
+            ellipse(250, 200, 12, 12);
+            // Right eye
+            ellipse(350, 200, 12, 12);
+            
+            // Eyebrows (thicker and more prominent)
+            fill(80, 60, 40); // Brown color for eyebrows
+            // Left eyebrow
+            rect(220, 180, 50, 8, 4);
+            // Right eyebrow
+            rect(330, 180, 50, 8, 4);
+            
+            // Nose (larger)
+            stroke(0);
+            strokeWeight(3);
+            noFill();
+            line(300, 220, 285, 260);
+            line(285, 260, 300, 265);
+            
+            // Mouth (wider)
+            noFill();
+            arc(300, 290, 70, 35, 0, PI);
+            
+            // Ears (larger)
+            fill(skin);
+            // Left ear
+            ellipse(190, 200, 30, 50);
+            // Right ear
+            ellipse(410, 200, 30, 50);
+            
+            // Shirt details - add some simple clothing details
+            stroke(60, 60, 60);
+            strokeWeight(2);
+            // Neckline
+            line(280, 350, 320, 350);
+            // Simple shirt fold lines
+            line(300, 350, 300, 400);
+            noStroke();
+        }
+
+        function drawChihuahua() {
+            // Chihuahua colors
+            const chihuahuaTan = color(210, 180, 140);
+            const chihuahuaBrown = color(160, 120, 80);
+            const chihuahuaBlack = color(60, 50, 40);
+            const noseBlack = color(30, 30, 30);
+            
+            // Chihuahua body (positioned on right side)
+            const dogX = 450;
+            const dogY = 450;
+            
+            // Body (tan base)
+            fill(chihuahuaTan);
+            noStroke();
+            ellipse(dogX, dogY, 120, 80);
+            
+            // Head
+            ellipse(dogX, dogY - 60, 100, 80);
+            
+            // Ears - large upright ears typical of chihuahuas
+            fill(chihuahuaBrown);
+            // Left ear
+            triangle(dogX - 30, dogY - 90, dogX - 50, dogY - 130, dogX - 10, dogY - 100);
+            // Right ear
+            triangle(dogX + 30, dogY - 90, dogX + 50, dogY - 130, dogX + 10, dogY - 100);
+            
+            // Brown face mask pattern
+            fill(chihuahuaBrown);
+            // Mask covering snout area
+            arc(dogX, dogY - 40, 70, 50, 0, PI, CHORD);
+            
+            // Black markings on face
+            fill(chihuahuaBlack);
+            // Darker areas around eyes
+            ellipse(dogX - 20, dogY - 60, 25, 20);
+            ellipse(dogX + 20, dogY - 60, 25, 20);
+            
+            // Eyes
+            fill(255);
+            ellipse(dogX - 20, dogY - 60, 12, 12);
+            ellipse(dogX + 20, dogY - 60, 12, 12);
+            fill(0);
+            ellipse(dogX - 20, dogY - 60, 6, 6);
+            ellipse(dogX + 20, dogY - 60, 6, 6);
+            
+            // Nose (black)
+            fill(noseBlack);
+            triangle(dogX - 5, dogY - 40, dogX + 5, dogY - 40, dogX, dogY - 30);
+            
+            // Mouth
+            stroke(80, 60, 40);
+            strokeWeight(2);
+            noFill();
+            // Simple mouth line
+            line(dogX - 10, dogY - 20, dogX + 10, dogY - 20);
+            
+            // Front legs
+            noStroke();
+            fill(chihuahuaTan);
+            // Left front leg
+            rect(dogX - 25, dogY + 30, 15, 40, 5);
+            // Right front leg
+            rect(dogX + 10, dogY + 30, 15, 40, 5);
+            
+            // Paw details
+            fill(210, 190, 170); // Light paw color
+            ellipse(dogX - 18, dogY + 70, 20, 10);
+            ellipse(dogX + 17, dogY + 70, 20, 10);
+        }
+    </script>
 </body>
 </html>
