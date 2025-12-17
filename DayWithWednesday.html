@@ -4,13 +4,199 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to a Day with Wednesday!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #ffd1dc, #cf77a4);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            color: #5a3a4a;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3.2rem;
+            margin-bottom: 30px;
+            color: #8a2a5e;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            line-height: 1.2;
+        }
+        
+        .intro-text {
+            font-size: 1.8rem;
+            margin-bottom: 50px;
+            color: #7a3a5a;
+            line-height: 1.5;
+            max-width: 800px;
+        }
+        
+        .next-page-link {
+            display: inline-block;
+            margin: 40px 0 60px;
+            font-size: 1.6rem;
+            padding: 12px 30px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #8a2a5e;
+            font-weight: bold;
+            border: 2px solid rgba(207, 119, 164, 0.4);
+        }
+        
+        .next-page-link:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-links-section {
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .image-links-title {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #8a2a5e;
+        }
+        
+        .image-links-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .image-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.25);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            color: #7a3a5a;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            height: 100%;
+        }
+        
+        .image-link:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .image-link-text {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        
+        .image-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .image-links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .intro-text {
+                font-size: 1.5rem;
+            }
+            
+            .image-links-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .image-link {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to a Day with Wednesday!</h1>
-    <p>What's your vibe?.</p>
+    <div class="container">
+        <h1>Welcome to a Day with Wednesday!</h1>
+        
+        <p class="intro-text">What's your vibe? Explore Wednesday's daily adventures by clicking on the activities below.</p>
+        
+        <a href="nextpage.html" class="next-page-link">
+            Go to the Next Page →
+        </a>
+        
+        <div class="image-links-section">
+            <h2 class="image-links-title">Wednesday's Photo Gallery</h2>
+            
+            <div class="image-links-grid">
+                <!-- Row 1 -->
+                <a href="Chill-On-The-Couch.jpeg" class="image-link">
+                    <div class="image-icon">🛋️</div>
+                    <div class="image-link-text">Chill on the Couch!</div>
+                </a>
+                
+                <a href="Chill-With-Mom.jpeg" class="image-link">
+                    <div class="image-icon">👩‍👧</div>
+                    <div class="image-link-text">Chill with Mom!</div>
+                </a>
+                
+                <a href="Lay-With-Cheese.jpeg" class="image-link">
+                    <div class="image-icon">🧀</div>
+                    <div class="image-link-text">Lay with Cheese!</div>
+                </a>
+                
+                <!-- Row 2 -->
+                <a href="Lay-With-Cheese.jpeg" class="image-link">
+                    <div class="image-icon">🛏️</div>
+                    <div class="image-link-text">Put on Jamas!</div>
+                </a>
+                
+                <a href="Show-Off-The-Pearly-Whites.jpeg" class="image-link">
+                    <div class="image-icon">😁</div>
+                    <div class="image-link-text">Show Off your Pearly Whites</div>
+                </a>
+                
+                <a href="Turkey-Time.jpeg" class="image-link">
+                    <div class="image-icon">🦃</div>
+                    <div class="image-link-text">Turkey Time!</div>
+                </a>
+            </div>
+            
+            <!-- Additional link mentioned in the request -->
+            <div class="image-links-grid">
+                <a href="Walk-With-Cheese.jpeg" class="image-link">
+                    <div class="image-icon">🚶‍♀️🧀</div>
+                    <div class="image-link-text">Walk with Cheese!</div>
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-<a href="nextpage.html" style="color: #cf77a4; text-decoration: none; font-weight: bold;">
-Go to the Next Page →
-</a>
-</p>
